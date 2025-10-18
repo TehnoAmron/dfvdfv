@@ -21,7 +21,15 @@ text_messages = {
     'wrong_chat':
         u'Hi there!\nThanks for trying me out. However, this bot can only be used in the pyTelegramAPI group chat.\n'
         u'Join us!\n\n'
-        u'https://telegram.me/joinchat/067e22c60035523fda8f6025ee87e30b'
+        u'https://telegram.me/joinchat/067e22c60035523fda8f6025ee87e30b',
+
+    'help':
+        u'[Bot] List of commands:.\n'
+        u'-/hello - Приветствие.\n'
+        u'-/heh [Кол-во раз] - Пишет heh определенное кол-во раз.\n'
+        u'-/ping - Ваш пинг.\n'
+        u'-/pass [Длинна пароля] - Придумывает рандомный пароль.\n'
+        u'-/bye - Прощание.\n'
 }
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
@@ -48,7 +56,11 @@ def on_ping(message):
 def on_info(message):
 
     bot.reply_to(message, text_messages['info'])
-    
+
+@bot.message_handler(commands=['help'])
+def on_ping(message):
+    bot.reply_to(message, "")
+
 @bot.message_handler(commands=['pass'])
 def send_password(message):
     password = gen_pass(10)  # Устанавливаем длину пароля, например, 10 символов
