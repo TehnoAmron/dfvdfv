@@ -61,6 +61,32 @@ def on_info(message):
 def on_ping(message):
     bot.reply_to(message, "")
 
+@bot.message_handler(commands=['animal'])
+def send_mem3(message):
+    with open('images/anim_memee.jpeg', 'rb') as f:  
+        bot.send_photo(message.chat.id, f)  
+
+@bot.message_handler(commands=['animal2'])
+def send_mem3(message):
+    with open('images/anim_meme.jpeg', 'rb') as f:  
+        bot.send_photo(message.chat.id, f) 
+
+@bot.message_handler(commands=['animal3'])
+def send_mem3(message):
+    with open('images/anim_mem.jpeg', 'rb') as f:  
+        bot.send_photo(message.chat.id, f) 
+
+@bot.message_handler(commands=['animal4'])
+def send_mem3(message):
+    with open('images/anim_memm.jpeg', 'rb') as f:  
+        bot.send_photo(message.chat.id, f)    
+
+@bot.message_handler(commands=['random_animal_mem'])
+def send_random_mem(message):
+    img_name = random.choice(os.listdir('imag'))
+    with open(f'images/{img_name}', 'rb') as f:  
+        bot.send_photo(message.chat.id, f)  
+
 @bot.message_handler(commands=['pass'])
 def send_password(message):
     password = gen_pass(10)  # Устанавливаем длину пароля, например, 10 символов
