@@ -12,6 +12,11 @@ text_messages = {
         u'examples (https://github.com/eternnoir/pyTelegramBotAPI/tree/master/examples) first.\n\n'
         u'I hope you enjoy your stay here!',
 
+    'secret':
+        u" Бросок монетки — открыть «Орел» или «Решка»\n"
+        u"🔐 Генератор пароля — создавай случайные пароли\n"
+        u"🎨 Случайная картинка — открыть мем, животное или космос"
+        u"🧙 Тайное послание — придумай свой стиль и загадку"
     'info':
         u"I am a TehnoBot that helps people.\n"
         u"Don't worry if the bot isn't 100% working yet.\n"
@@ -187,6 +192,11 @@ def send_random_mem(message):
     img_name = random.choice(os.listdir("ecophoto"))
     with open(f'ecophoto/{img_name}', 'rb') as f:  
         bot.send_photo(message.chat.id, f) 
+
+@app.route("/secret")
+def secret():
+    return "<h1>Ты нашёл тайную страницу!</h1>"
+    print(secret)
 
 
 @bot.message_handler(commands=['pass'])
